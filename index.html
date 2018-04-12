@@ -1,1 +1,8812 @@
 測試一下
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User Modeling Demo System</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">商品趨勢預測技術</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>                   
+                </li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>                  
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- /.navbar-top-links -->
+            
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        
+                        <li>
+                            <a href="/main"><i class="fa fa-line-chart"></i> 品牌產品類型偵測</a>
+                        </li>
+                        <li>
+                            <a href="/comp_product"><i class="fa fa-cubes"></i> 產品類型比較</a>
+                        </li>    
+                        <li>
+                            <a href="/comp_brand"><i class="fa fa-barcode"></i> 品牌比較</a>
+                        </li>                                             
+                           
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+       
+
+  
+
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- button
+<input type ="button" onclick="javascript:location.href='http://140.96.83.239:9898/prod_info'" value="Show product info" style="margin-bottom: 15px"></input>
+ -->
+
+ <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#example1-tab1" aria-controls="example1-tab1" role="tab" data-toggle="tab">Monthly</a></li>
+        <li role="presentation"><a href="#example1-tab2" aria-controls="#example1-tab2" role="tab" data-toggle="tab">Weekly</a></li>
+    </ul>
+
+ <!-- Tab panes -->
+    <div class="tab-content">
+<div role="tabpanel" class="tab-pane fade in active" id="example1-tab1">
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+		 <!-- <div></div> -->
+        <thead>
+            <tr>
+                <th ">Ranking</th>
+                <th>Brand Name</th>
+                <th>Product</th>
+                <th>#Total/MonthAvg</th>
+         
+                <th>This Month</th>
+                <th>#Growing</th>
+                <th>Growth Rate</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+           
+                   <th ">Ranking</th>
+                <th>Brand Name</th>
+                <th>Product</th>
+                <th>#Total/MonthAvg</th>
+                <th>This Month</th>
+                 <th>#Growing</th>
+                <th>Growth Rate</th>
+                
+            </tr>
+        </tfoot>
+        <tbody>
+        
+		
+			
+		            <tr>
+		                <td>1</td>
+		                <td>蘭蔻</td>
+		                <td>細紋</td>
+		                <td>673 / 19.7941</td>
+		  
+		                <td>8</td>
+		                <td>7</td>
+		                <td>700%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>2</td>
+		                <td>契爾氏</td>
+		                <td>乳液</td>
+		                <td>1584 / 46.5882</td>
+		  
+		                <td>8</td>
+		                <td>7</td>
+		                <td>700%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>3</td>
+		                <td>魅可</td>
+		                <td>護唇膏</td>
+		                <td>702 / 20.6471</td>
+		  
+		                <td>7</td>
+		                <td>6</td>
+		                <td>600%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>4</td>
+		                <td>碧兒泉</td>
+		                <td>乳液</td>
+		                <td>790 / 23.2353</td>
+		  
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>5</td>
+		                <td>香奈兒</td>
+		                <td>唇釉</td>
+		                <td>403 / 11.8529</td>
+		  
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>6</td>
+		                <td>香奈兒</td>
+		                <td>口紅</td>
+		                <td>465 / 13.6765</td>
+		  
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>7</td>
+		                <td>蘭蔻</td>
+		                <td>眼霜</td>
+		                <td>578 / 17</td>
+		  
+		                <td>9</td>
+		                <td>7</td>
+		                <td>350%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>8</td>
+		                <td>雅詩蘭黛</td>
+		                <td>香水</td>
+		                <td>509 / 14.9706</td>
+		  
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>9</td>
+		                <td>聖羅蘭</td>
+		                <td>細紋</td>
+		                <td>333 / 9.79412</td>
+		  
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>10</td>
+		                <td>魅可</td>
+		                <td>眉毛</td>
+		                <td>620 / 18.2353</td>
+		  
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>11</td>
+		                <td>蘭蔻</td>
+		                <td>香水</td>
+		                <td>504 / 14.8235</td>
+		  
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>12</td>
+		                <td>聖羅蘭</td>
+		                <td>眉毛</td>
+		                <td>605 / 17.7941</td>
+		  
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>13</td>
+		                <td>魅可</td>
+		                <td>粉底液</td>
+		                <td>1048 / 30.8235</td>
+		  
+		                <td>14</td>
+		                <td>10</td>
+		                <td>250%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>14</td>
+		                <td>香奈兒</td>
+		                <td>精華液</td>
+		                <td>917 / 26.9706</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>15</td>
+		                <td>魅可</td>
+		                <td>唇釉</td>
+		                <td>546 / 16.0588</td>
+		  
+		                <td>6</td>
+		                <td>4</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>16</td>
+		                <td>蘭蔻</td>
+		                <td>眉毛</td>
+		                <td>457 / 13.4412</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>17</td>
+		                <td>聖羅蘭</td>
+		                <td>睫毛</td>
+		                <td>909 / 26.7353</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>18</td>
+		                <td>香奈兒</td>
+		                <td>睫毛膏</td>
+		                <td>499 / 14.6765</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>19</td>
+		                <td>聖羅蘭</td>
+		                <td>睫毛膏</td>
+		                <td>690 / 20.2941</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>20</td>
+		                <td>雅詩蘭黛</td>
+		                <td>口紅</td>
+		                <td>359 / 10.5588</td>
+		  
+		                <td>6</td>
+		                <td>4</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>21</td>
+		                <td>SK-II</td>
+		                <td>化妝棉</td>
+		                <td>941 / 27.6765</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>22</td>
+		                <td>碧兒泉</td>
+		                <td>防曬</td>
+		                <td>601 / 17.6765</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>23</td>
+		                <td>香奈兒</td>
+		                <td>眼線筆</td>
+		                <td>326 / 9.58823</td>
+		  
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>24</td>
+		                <td>魅可</td>
+		                <td>毛孔</td>
+		                <td>813 / 23.9118</td>
+		  
+		                <td>8</td>
+		                <td>5</td>
+		                <td>167%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>25</td>
+		                <td>蘭蔻</td>
+		                <td>化妝棉</td>
+		                <td>460 / 13.5294</td>
+		  
+		                <td>5</td>
+		                <td>3</td>
+		                <td>150%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>26</td>
+		                <td>雅詩蘭黛</td>
+		                <td>乳液</td>
+		                <td>1164 / 34.2353</td>
+		  
+		                <td>5</td>
+		                <td>3</td>
+		                <td>150%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>27</td>
+		                <td>契爾氏</td>
+		                <td>敏感</td>
+		                <td>1302 / 38.2941</td>
+		  
+		                <td>5</td>
+		                <td>3</td>
+		                <td>150%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>28</td>
+		                <td>SK-II</td>
+		                <td>毛孔</td>
+		                <td>1369 / 40.2647</td>
+		  
+		                <td>5</td>
+		                <td>3</td>
+		                <td>150%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>29</td>
+		                <td>蘭蔻</td>
+		                <td>精華液</td>
+		                <td>1725 / 50.7353</td>
+		  
+		                <td>12</td>
+		                <td>7</td>
+		                <td>140%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>30</td>
+		                <td>魅可</td>
+		                <td>口紅</td>
+		                <td>564 / 16.5882</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>31</td>
+		                <td>SK-II</td>
+		                <td>眼霜</td>
+		                <td>816 / 24</td>
+		  
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>32</td>
+		                <td>契爾氏</td>
+		                <td>護唇膏</td>
+		                <td>654 / 19.2353</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>33</td>
+		                <td>聖羅蘭</td>
+		                <td>眼線液</td>
+		                <td>398 / 11.7059</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>34</td>
+		                <td>歐蕾</td>
+		                <td>精華液</td>
+		                <td>421 / 12.3824</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>35</td>
+		                <td>魅可</td>
+		                <td>海綿</td>
+		                <td>383 / 11.2647</td>
+		  
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>36</td>
+		                <td>雅詩蘭黛</td>
+		                <td>洗髮</td>
+		                <td>307 / 9.02941</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>37</td>
+		                <td>歐蕾</td>
+		                <td>乳液</td>
+		                <td>496 / 14.5882</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>38</td>
+		                <td>蘭蔻</td>
+		                <td>卸妝乳</td>
+		                <td>326 / 9.58823</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>39</td>
+		                <td>蘭蔻</td>
+		                <td>精油</td>
+		                <td>486 / 14.2941</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>40</td>
+		                <td>魅可</td>
+		                <td>唇彩</td>
+		                <td>1044 / 30.7059</td>
+		  
+		                <td>8</td>
+		                <td>4</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>41</td>
+		                <td>雅詩蘭黛</td>
+		                <td>美容油</td>
+		                <td>304 / 8.94118</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>42</td>
+		                <td>魅可</td>
+		                <td>乳液</td>
+		                <td>426 / 12.5294</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>43</td>
+		                <td>契爾氏</td>
+		                <td>凝膠</td>
+		                <td>472 / 13.8824</td>
+		  
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>44</td>
+		                <td>蘭蔻</td>
+		                <td>乳液</td>
+		                <td>1317 / 38.7353</td>
+		  
+		                <td>8</td>
+		                <td>4</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>45</td>
+		                <td>蘭蔻</td>
+		                <td>護唇膏</td>
+		                <td>549 / 16.1471</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>46</td>
+		                <td>契爾氏</td>
+		                <td>精華液</td>
+		                <td>1815 / 53.3824</td>
+		  
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>47</td>
+		                <td>雅詩蘭黛</td>
+		                <td>精油</td>
+		                <td>468 / 13.7647</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>48</td>
+		                <td>歐蕾</td>
+		                <td>化妝水</td>
+		                <td>411 / 12.0882</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>49</td>
+		                <td>蘭蔻</td>
+		                <td>口紅</td>
+		                <td>355 / 10.4412</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>50</td>
+		                <td>植村秀</td>
+		                <td>眼線膠</td>
+		                <td>392 / 11.5294</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>51</td>
+		                <td>芭比波朗</td>
+		                <td>唇蜜</td>
+		                <td>633 / 18.6176</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>52</td>
+		                <td>蘭蔻</td>
+		                <td>敏感</td>
+		                <td>821 / 24.1471</td>
+		  
+		                <td>6</td>
+		                <td>3</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>53</td>
+		                <td>亞曼尼</td>
+		                <td>精華液</td>
+		                <td>545 / 16.0294</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>54</td>
+		                <td>蘭蔻</td>
+		                <td>CC霜</td>
+		                <td>483 / 14.2059</td>
+		  
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>55</td>
+		                <td>契爾氏</td>
+		                <td>粉底液</td>
+		                <td>755 / 22.2059</td>
+		  
+		                <td>6</td>
+		                <td>3</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>56</td>
+		                <td>植村秀</td>
+		                <td>精華液</td>
+		                <td>937 / 27.5588</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>57</td>
+		                <td>碧兒泉</td>
+		                <td>敏感</td>
+		                <td>449 / 13.2059</td>
+		  
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>58</td>
+		                <td>植村秀</td>
+		                <td>唇彩</td>
+		                <td>1228 / 36.1176</td>
+		  
+		                <td>5</td>
+		                <td>2</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>59</td>
+		                <td>芭比波朗</td>
+		                <td>粉底液</td>
+		                <td>1263 / 37.1471</td>
+		  
+		                <td>6</td>
+		                <td>2</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>60</td>
+		                <td>植村秀</td>
+		                <td>唇膏</td>
+		                <td>1876 / 55.1765</td>
+		  
+		                <td>6</td>
+		                <td>2</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>61</td>
+		                <td>蘭蔻</td>
+		                <td>唇膏</td>
+		                <td>1481 / 43.5588</td>
+		  
+		                <td>9</td>
+		                <td>3</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>62</td>
+		                <td>契爾氏</td>
+		                <td>防曬</td>
+		                <td>1057 / 31.0882</td>
+		  
+		                <td>6</td>
+		                <td>2</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>63</td>
+		                <td>植村秀</td>
+		                <td>卸妝油</td>
+		                <td>764 / 22.4706</td>
+		  
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>64</td>
+		                <td>聖羅蘭</td>
+		                <td>唇釉</td>
+		                <td>1230 / 36.1765</td>
+		  
+		                <td>6</td>
+		                <td>2</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>65</td>
+		                <td>植村秀</td>
+		                <td>凝膠</td>
+		                <td>346 / 10.1765</td>
+		  
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>66</td>
+		                <td>香奈兒</td>
+		                <td>睫毛</td>
+		                <td>679 / 19.9706</td>
+		  
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>67</td>
+		                <td>香奈兒</td>
+		                <td>敏感</td>
+		                <td>430 / 12.6471</td>
+		  
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>68</td>
+		                <td>碧兒泉</td>
+		                <td>唇膏</td>
+		                <td>583 / 17.1471</td>
+		  
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>69</td>
+		                <td>蘭蔻</td>
+		                <td>乳霜</td>
+		                <td>1256 / 36.9412</td>
+		  
+		                <td>10</td>
+		                <td>3</td>
+		                <td>43%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>70</td>
+		                <td>契爾氏</td>
+		                <td>化妝水</td>
+		                <td>2927 / 86.0882</td>
+		  
+		                <td>10</td>
+		                <td>3</td>
+		                <td>43%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>71</td>
+		                <td>雅詩蘭黛</td>
+		                <td>唇膏</td>
+		                <td>1589 / 46.7353</td>
+		  
+		                <td>10</td>
+		                <td>3</td>
+		                <td>43%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>72</td>
+		                <td>蘭蔻</td>
+		                <td>化妝水</td>
+		                <td>2056 / 60.4706</td>
+		  
+		                <td>12</td>
+		                <td>3</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>73</td>
+		                <td>植村秀</td>
+		                <td>潔顏油</td>
+		                <td>567 / 16.6765</td>
+		  
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>74</td>
+		                <td>雅詩蘭黛</td>
+		                <td>眼妝</td>
+		                <td>350 / 10.2941</td>
+		  
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>75</td>
+		                <td>碧兒泉</td>
+		                <td>彩妝</td>
+		                <td>588 / 17.2941</td>
+		  
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>76</td>
+		                <td>雅詩蘭黛</td>
+		                <td>護唇膏</td>
+		                <td>588 / 17.2941</td>
+		  
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>77</td>
+		                <td>亞曼尼</td>
+		                <td>粉底液</td>
+		                <td>1157 / 34.0294</td>
+		  
+		                <td>8</td>
+		                <td>2</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>78</td>
+		                <td>雅詩蘭黛</td>
+		                <td>敏感</td>
+		                <td>656 / 19.2941</td>
+		  
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>79</td>
+		                <td>魅可</td>
+		                <td>粉餅</td>
+		                <td>1303 / 38.3235</td>
+		  
+		                <td>8</td>
+		                <td>2</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>80</td>
+		                <td>碧兒泉</td>
+		                <td>粉底液</td>
+		                <td>670 / 19.7059</td>
+		  
+		                <td>5</td>
+		                <td>1</td>
+		                <td>25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>81</td>
+		                <td>香奈兒</td>
+		                <td>化妝水</td>
+		                <td>1145 / 33.6765</td>
+		  
+		                <td>6</td>
+		                <td>1</td>
+		                <td>20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>82</td>
+		                <td>雅詩蘭黛</td>
+		                <td>彩妝</td>
+		                <td>1487 / 43.7353</td>
+		  
+		                <td>6</td>
+		                <td>1</td>
+		                <td>20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>83</td>
+		                <td>植村秀</td>
+		                <td>粉餅</td>
+		                <td>2030 / 59.7059</td>
+		  
+		                <td>8</td>
+		                <td>1</td>
+		                <td>14%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>84</td>
+		                <td>聖羅蘭</td>
+		                <td>粉底液</td>
+		                <td>2299 / 67.6176</td>
+		  
+		                <td>18</td>
+		                <td>2</td>
+		                <td>13%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>85</td>
+		                <td>雅詩蘭黛</td>
+		                <td>粉底液</td>
+		                <td>1765 / 51.9118</td>
+		  
+		                <td>9</td>
+		                <td>1</td>
+		                <td>13%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>86</td>
+		                <td>魅可</td>
+		                <td>唇膏</td>
+		                <td>2124 / 62.4706</td>
+		  
+		                <td>11</td>
+		                <td>1</td>
+		                <td>10%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>87</td>
+		                <td>香奈兒</td>
+		                <td>唇膏</td>
+		                <td>2137 / 62.8529</td>
+		  
+		                <td>14</td>
+		                <td>1</td>
+		                <td>8%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>88</td>
+		                <td>植村秀</td>
+		                <td>眼線液</td>
+		                <td>552 / 16.2353</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>89</td>
+		                <td>聖羅蘭</td>
+		                <td>口紅</td>
+		                <td>918 / 27</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>90</td>
+		                <td>魅可</td>
+		                <td>遮瑕</td>
+		                <td>1395 / 41.0294</td>
+		  
+		                <td>9</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>91</td>
+		                <td>雅詩蘭黛</td>
+		                <td>唇彩</td>
+		                <td>918 / 27</td>
+		  
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>92</td>
+		                <td>魅可</td>
+		                <td>睫毛膏</td>
+		                <td>704 / 20.7059</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>93</td>
+		                <td>亞曼尼</td>
+		                <td>護唇膏</td>
+		                <td>450 / 13.2353</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>94</td>
+		                <td>聖羅蘭</td>
+		                <td>精華液</td>
+		                <td>1031 / 30.3235</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>95</td>
+		                <td>芭比波朗</td>
+		                <td>眉筆</td>
+		                <td>312 / 9.17647</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>96</td>
+		                <td>魅可</td>
+		                <td>睫毛</td>
+		                <td>998 / 29.3529</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>97</td>
+		                <td>聖羅蘭</td>
+		                <td>眼線筆</td>
+		                <td>403 / 11.8529</td>
+		  
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>98</td>
+		                <td>植村秀</td>
+		                <td>睫毛</td>
+		                <td>1234 / 36.2941</td>
+		  
+		                <td>4</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>99</td>
+		                <td>香奈兒</td>
+		                <td>眼妝</td>
+		                <td>587 / 17.2647</td>
+		  
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>100</td>
+		                <td>植村秀</td>
+		                <td>粉霜</td>
+		                <td>335 / 9.85294</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>101</td>
+		                <td>蘭蔻</td>
+		                <td>眼妝</td>
+		                <td>622 / 18.2941</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>102</td>
+		                <td>碧兒泉</td>
+		                <td>面膜</td>
+		                <td>893 / 26.2647</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>103</td>
+		                <td>魅可</td>
+		                <td>眼妝</td>
+		                <td>1042 / 30.6471</td>
+		  
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>104</td>
+		                <td>雅詩蘭黛</td>
+		                <td>唇蜜</td>
+		                <td>1030 / 30.2941</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>105</td>
+		                <td>魅可</td>
+		                <td>眼線液</td>
+		                <td>441 / 12.9706</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>106</td>
+		                <td>芭比波朗</td>
+		                <td>眉毛</td>
+		                <td>389 / 11.4412</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>107</td>
+		                <td>植村秀</td>
+		                <td>眉粉</td>
+		                <td>398 / 11.7059</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>108</td>
+		                <td>聖羅蘭</td>
+		                <td>乳霜</td>
+		                <td>1143 / 33.6176</td>
+		  
+		                <td>5</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>109</td>
+		                <td>雅詩蘭黛</td>
+		                <td>睫毛</td>
+		                <td>396 / 11.6471</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>110</td>
+		                <td>聖羅蘭</td>
+		                <td>眉筆</td>
+		                <td>425 / 12.5</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>111</td>
+		                <td>魅可</td>
+		                <td>唇蜜</td>
+		                <td>605 / 17.7941</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>112</td>
+		                <td>雅詩蘭黛</td>
+		                <td>精華液</td>
+		                <td>1655 / 48.6765</td>
+		  
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>113</td>
+		                <td>聖羅蘭</td>
+		                <td>CC霜</td>
+		                <td>516 / 15.1765</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>114</td>
+		                <td>契爾氏</td>
+		                <td>毛孔</td>
+		                <td>1488 / 43.7647</td>
+		  
+		                <td>4</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>115</td>
+		                <td>香奈兒</td>
+		                <td>粉底液</td>
+		                <td>1378 / 40.5294</td>
+		  
+		                <td>8</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>116</td>
+		                <td>蘭蔻</td>
+		                <td>洗髮</td>
+		                <td>342 / 10.0588</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>117</td>
+		                <td>聖羅蘭</td>
+		                <td>化妝水</td>
+		                <td>1230 / 36.1765</td>
+		  
+		                <td>8</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>118</td>
+		                <td>蘭蔻</td>
+		                <td>睫毛</td>
+		                <td>975 / 28.6765</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>119</td>
+		                <td>亞曼尼</td>
+		                <td>精油</td>
+		                <td>327 / 9.61765</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>120</td>
+		                <td>SK-II</td>
+		                <td>粉底液</td>
+		                <td>697 / 20.5</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>121</td>
+		                <td>蘭蔻</td>
+		                <td>唇蜜</td>
+		                <td>938 / 27.5882</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>122</td>
+		                <td>雅詩蘭黛</td>
+		                <td>香精</td>
+		                <td>319 / 9.38235</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>123</td>
+		                <td>契爾氏</td>
+		                <td>精油</td>
+		                <td>451 / 13.2647</td>
+		  
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>124</td>
+		                <td>芭比波朗</td>
+		                <td>毛孔</td>
+		                <td>593 / 17.4412</td>
+		  
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>125</td>
+		                <td>SK-II</td>
+		                <td>乳霜</td>
+		                <td>1310 / 38.5294</td>
+		  
+		                <td>8</td>
+		                <td>-1</td>
+		                <td>-11%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>126</td>
+		                <td>芭比波朗</td>
+		                <td>唇膏</td>
+		                <td>1129 / 33.2059</td>
+		  
+		                <td>7</td>
+		                <td>-1</td>
+		                <td>-13%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>127</td>
+		                <td>雅詩蘭黛</td>
+		                <td>化妝水</td>
+		                <td>1768 / 52</td>
+		  
+		                <td>7</td>
+		                <td>-1</td>
+		                <td>-13%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>128</td>
+		                <td>聖羅蘭</td>
+		                <td>香水</td>
+		                <td>547 / 16.0882</td>
+		  
+		                <td>6</td>
+		                <td>-1</td>
+		                <td>-14%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>129</td>
+		                <td>雅詩蘭黛</td>
+		                <td>粉餅</td>
+		                <td>1690 / 49.7059</td>
+		  
+		                <td>5</td>
+		                <td>-1</td>
+		                <td>-17%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>130</td>
+		                <td>契爾氏</td>
+		                <td>彩妝</td>
+		                <td>897 / 26.3824</td>
+		  
+		                <td>5</td>
+		                <td>-1</td>
+		                <td>-17%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>131</td>
+		                <td>香奈兒</td>
+		                <td>唇彩</td>
+		                <td>1168 / 34.3529</td>
+		  
+		                <td>5</td>
+		                <td>-1</td>
+		                <td>-17%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>132</td>
+		                <td>契爾氏</td>
+		                <td>遮瑕</td>
+		                <td>436 / 12.8235</td>
+		  
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>133</td>
+		                <td>契爾氏</td>
+		                <td>唇膏</td>
+		                <td>1076 / 31.6471</td>
+		  
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>134</td>
+		                <td>植村秀</td>
+		                <td>眼妝</td>
+		                <td>1083 / 31.8529</td>
+		  
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>135</td>
+		                <td>魅可</td>
+		                <td>防曬</td>
+		                <td>711 / 20.9118</td>
+		  
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>136</td>
+		                <td>契爾氏</td>
+		                <td>乳霜</td>
+		                <td>1349 / 39.6765</td>
+		  
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>137</td>
+		                <td>亞曼尼</td>
+		                <td>彩妝</td>
+		                <td>1280 / 37.6471</td>
+		  
+		                <td>7</td>
+		                <td>-2</td>
+		                <td>-22%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>138</td>
+		                <td>香奈兒</td>
+		                <td>護唇膏</td>
+		                <td>719 / 21.1471</td>
+		  
+		                <td>3</td>
+		                <td>-1</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>139</td>
+		                <td>聖羅蘭</td>
+		                <td>眼妝</td>
+		                <td>867 / 25.5</td>
+		  
+		                <td>6</td>
+		                <td>-2</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>140</td>
+		                <td>SK-II</td>
+		                <td>面膜</td>
+		                <td>1199 / 35.2647</td>
+		  
+		                <td>6</td>
+		                <td>-2</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>141</td>
+		                <td>芭比波朗</td>
+		                <td>唇彩</td>
+		                <td>543 / 15.9706</td>
+		  
+		                <td>3</td>
+		                <td>-1</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>142</td>
+		                <td>芭比波朗</td>
+		                <td>粉餅</td>
+		                <td>1308 / 38.4706</td>
+		  
+		                <td>3</td>
+		                <td>-1</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>143</td>
+		                <td>蘭蔻</td>
+		                <td>唇彩</td>
+		                <td>748 / 22</td>
+		  
+		                <td>3</td>
+		                <td>-1</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>144</td>
+		                <td>芭比波朗</td>
+		                <td>遮瑕</td>
+		                <td>1394 / 41</td>
+		  
+		                <td>5</td>
+		                <td>-2</td>
+		                <td>-29%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>145</td>
+		                <td>蘭蔻</td>
+		                <td>粉餅</td>
+		                <td>3115 / 91.6176</td>
+		  
+		                <td>12</td>
+		                <td>-5</td>
+		                <td>-29%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>146</td>
+		                <td>雅詩蘭黛</td>
+		                <td>乳霜</td>
+		                <td>1598 / 47</td>
+		  
+		                <td>4</td>
+		                <td>-2</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>147</td>
+		                <td>亞曼尼</td>
+		                <td>唇彩</td>
+		                <td>900 / 26.4706</td>
+		  
+		                <td>4</td>
+		                <td>-2</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>148</td>
+		                <td>聖羅蘭</td>
+		                <td>精油</td>
+		                <td>602 / 17.7059</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>149</td>
+		                <td>聖羅蘭</td>
+		                <td>粉霜</td>
+		                <td>815 / 23.9706</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>150</td>
+		                <td>植村秀</td>
+		                <td>乳霜</td>
+		                <td>732 / 21.5294</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>151</td>
+		                <td>亞曼尼</td>
+		                <td>唇蜜</td>
+		                <td>812 / 23.8824</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>152</td>
+		                <td>契爾氏</td>
+		                <td>面膜</td>
+		                <td>1836 / 54</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>153</td>
+		                <td>香奈兒</td>
+		                <td>乳霜</td>
+		                <td>1152 / 33.8824</td>
+		  
+		                <td>4</td>
+		                <td>-2</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>154</td>
+		                <td>SK-II</td>
+		                <td>唇膏</td>
+		                <td>695 / 20.4412</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>155</td>
+		                <td>植村秀</td>
+		                <td>睫毛膏</td>
+		                <td>871 / 25.6176</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>156</td>
+		                <td>香奈兒</td>
+		                <td>指甲</td>
+		                <td>349 / 10.2647</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>157</td>
+		                <td>SK-II</td>
+		                <td>粉餅</td>
+		                <td>870 / 25.5882</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>158</td>
+		                <td>碧兒泉</td>
+		                <td>遮瑕</td>
+		                <td>462 / 13.5882</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>159</td>
+		                <td>蘭蔻</td>
+		                <td>眉筆</td>
+		                <td>317 / 9.32353</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>160</td>
+		                <td>魅可</td>
+		                <td>彩妝</td>
+		                <td>1641 / 48.2647</td>
+		  
+		                <td>4</td>
+		                <td>-2</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>161</td>
+		                <td>芭比波朗</td>
+		                <td>防曬</td>
+		                <td>587 / 17.2647</td>
+		  
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>162</td>
+		                <td>蘭蔻</td>
+		                <td>粉底液</td>
+		                <td>2415 / 71.0294</td>
+		  
+		                <td>11</td>
+		                <td>-6</td>
+		                <td>-35%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>163</td>
+		                <td>蘭蔻</td>
+		                <td>防曬</td>
+		                <td>1836 / 54</td>
+		  
+		                <td>5</td>
+		                <td>-3</td>
+		                <td>-38%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>164</td>
+		                <td>芭比波朗</td>
+		                <td>彩妝</td>
+		                <td>1254 / 36.8824</td>
+		  
+		                <td>5</td>
+		                <td>-3</td>
+		                <td>-38%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>165</td>
+		                <td>亞曼尼</td>
+		                <td>粉餅</td>
+		                <td>1090 / 32.0588</td>
+		  
+		                <td>5</td>
+		                <td>-3</td>
+		                <td>-38%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>166</td>
+		                <td>聖羅蘭</td>
+		                <td>唇彩</td>
+		                <td>2247 / 66.0882</td>
+		  
+		                <td>10</td>
+		                <td>-6</td>
+		                <td>-38%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>167</td>
+		                <td>亞曼尼</td>
+		                <td>乳霜</td>
+		                <td>701 / 20.6176</td>
+		  
+		                <td>3</td>
+		                <td>-2</td>
+		                <td>-40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>168</td>
+		                <td>SK-II</td>
+		                <td>噴霧</td>
+		                <td>394 / 11.5882</td>
+		  
+		                <td>3</td>
+		                <td>-2</td>
+		                <td>-40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>169</td>
+		                <td>達爾膚</td>
+		                <td>化妝水</td>
+		                <td>1172 / 34.4706</td>
+		  
+		                <td>3</td>
+		                <td>-2</td>
+		                <td>-40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>170</td>
+		                <td>SK-II</td>
+		                <td>精華液</td>
+		                <td>2049 / 60.2647</td>
+		  
+		                <td>3</td>
+		                <td>-2</td>
+		                <td>-40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>171</td>
+		                <td>雅詩蘭黛</td>
+		                <td>防曬</td>
+		                <td>1059 / 31.1471</td>
+		  
+		                <td>3</td>
+		                <td>-2</td>
+		                <td>-40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>172</td>
+		                <td>蘭蔻</td>
+		                <td>彩妝</td>
+		                <td>1980 / 58.2353</td>
+		  
+		                <td>7</td>
+		                <td>-5</td>
+		                <td>-42%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>173</td>
+		                <td>聖羅蘭</td>
+		                <td>毛孔</td>
+		                <td>980 / 28.8235</td>
+		  
+		                <td>7</td>
+		                <td>-5</td>
+		                <td>-42%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>174</td>
+		                <td>聖羅蘭</td>
+		                <td>彩妝</td>
+		                <td>2521 / 74.1471</td>
+		  
+		                <td>11</td>
+		                <td>-8</td>
+		                <td>-42%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>175</td>
+		                <td>植村秀</td>
+		                <td>彩妝</td>
+		                <td>2203 / 64.7941</td>
+		  
+		                <td>4</td>
+		                <td>-3</td>
+		                <td>-43%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>176</td>
+		                <td>香奈兒</td>
+		                <td>香水</td>
+		                <td>729 / 21.4412</td>
+		  
+		                <td>5</td>
+		                <td>-4</td>
+		                <td>-44%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>177</td>
+		                <td>香奈兒</td>
+		                <td>彩妝</td>
+		                <td>1978 / 58.1765</td>
+		  
+		                <td>11</td>
+		                <td>-9</td>
+		                <td>-45%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>178</td>
+		                <td>聖羅蘭</td>
+		                <td>唇膏</td>
+		                <td>3784 / 111.294</td>
+		  
+		                <td>13</td>
+		                <td>-11</td>
+		                <td>-46%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>179</td>
+		                <td>植村秀</td>
+		                <td>洗面乳</td>
+		                <td>323 / 9.5</td>
+		  
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>180</td>
+		                <td>碧兒泉</td>
+		                <td>乳霜</td>
+		                <td>881 / 25.9118</td>
+		  
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>181</td>
+		                <td>植村秀</td>
+		                <td>毛孔</td>
+		                <td>1241 / 36.5</td>
+		  
+		                <td>3</td>
+		                <td>-3</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>182</td>
+		                <td>香奈兒</td>
+		                <td>海綿</td>
+		                <td>324 / 9.52941</td>
+		  
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>183</td>
+		                <td>蘭蔻</td>
+		                <td>毛孔</td>
+		                <td>1436 / 42.2353</td>
+		  
+		                <td>3</td>
+		                <td>-3</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>184</td>
+		                <td>蘭蔻</td>
+		                <td>粉霜</td>
+		                <td>803 / 23.6176</td>
+		  
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>185</td>
+		                <td>芭比波朗</td>
+		                <td>化妝水</td>
+		                <td>667 / 19.6176</td>
+		  
+		                <td>3</td>
+		                <td>-3</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>186</td>
+		                <td>聖羅蘭</td>
+		                <td>香精</td>
+		                <td>333 / 9.79412</td>
+		  
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>187</td>
+		                <td>蘭蔻</td>
+		                <td>睫毛膏</td>
+		                <td>796 / 23.4118</td>
+		  
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>188</td>
+		                <td>契爾氏</td>
+		                <td>粉餅</td>
+		                <td>786 / 23.1176</td>
+		  
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>189</td>
+		                <td>SK-II</td>
+		                <td>香水</td>
+		                <td>333 / 9.79412</td>
+		  
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>190</td>
+		                <td>植村秀</td>
+		                <td>粉底液</td>
+		                <td>1988 / 58.4706</td>
+		  
+		                <td>5</td>
+		                <td>-5</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>191</td>
+		                <td>雅詩蘭黛</td>
+		                <td>細紋</td>
+		                <td>681 / 20.0294</td>
+		  
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>192</td>
+		                <td>蘭蔻</td>
+		                <td>凝膠</td>
+		                <td>435 / 12.7941</td>
+		  
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>193</td>
+		                <td>碧兒泉</td>
+		                <td>化妝水</td>
+		                <td>1221 / 35.9118</td>
+		  
+		                <td>4</td>
+		                <td>-5</td>
+		                <td>-56%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>194</td>
+		                <td>雅詩蘭黛</td>
+		                <td>遮瑕</td>
+		                <td>1302 / 38.2941</td>
+		  
+		                <td>4</td>
+		                <td>-5</td>
+		                <td>-56%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>195</td>
+		                <td>雅詩蘭黛</td>
+		                <td>毛孔</td>
+		                <td>1038 / 30.5294</td>
+		  
+		                <td>3</td>
+		                <td>-4</td>
+		                <td>-57%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>196</td>
+		                <td>雅詩蘭黛</td>
+		                <td>面膜</td>
+		                <td>1129 / 33.2059</td>
+		  
+		                <td>3</td>
+		                <td>-4</td>
+		                <td>-57%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>197</td>
+		                <td>蘭蔻</td>
+		                <td>遮瑕</td>
+		                <td>2260 / 66.4706</td>
+		  
+		                <td>6</td>
+		                <td>-8</td>
+		                <td>-57%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>198</td>
+		                <td>植村秀</td>
+		                <td>遮瑕</td>
+		                <td>1847 / 54.3235</td>
+		  
+		                <td>3</td>
+		                <td>-4</td>
+		                <td>-57%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>199</td>
+		                <td>達爾膚</td>
+		                <td>乳液</td>
+		                <td>1025 / 30.1471</td>
+		  
+		                <td>3</td>
+		                <td>-4</td>
+		                <td>-57%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>200</td>
+		                <td>蘭蔻</td>
+		                <td>面膜</td>
+		                <td>1004 / 29.5294</td>
+		  
+		                <td>5</td>
+		                <td>-7</td>
+		                <td>-58%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>201</td>
+		                <td>亞曼尼</td>
+		                <td>毛孔</td>
+		                <td>454 / 13.3529</td>
+		  
+		                <td>2</td>
+		                <td>-3</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>202</td>
+		                <td>植村秀</td>
+		                <td>防曬</td>
+		                <td>1258 / 37</td>
+		  
+		                <td>4</td>
+		                <td>-6</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>203</td>
+		                <td>芭比波朗</td>
+		                <td>乳霜</td>
+		                <td>523 / 15.3824</td>
+		  
+		                <td>2</td>
+		                <td>-3</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>204</td>
+		                <td>聖羅蘭</td>
+		                <td>唇蜜</td>
+		                <td>2099 / 61.7353</td>
+		  
+		                <td>2</td>
+		                <td>-3</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>205</td>
+		                <td>香奈兒</td>
+		                <td>粉餅</td>
+		                <td>1955 / 57.5</td>
+		  
+		                <td>4</td>
+		                <td>-6</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>206</td>
+		                <td>魅可</td>
+		                <td>化妝水</td>
+		                <td>378 / 11.1176</td>
+		  
+		                <td>2</td>
+		                <td>-3</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>207</td>
+		                <td>植村秀</td>
+		                <td>眉筆</td>
+		                <td>723 / 21.2647</td>
+		  
+		                <td>2</td>
+		                <td>-3</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>208</td>
+		                <td>聖羅蘭</td>
+		                <td>粉餅</td>
+		                <td>2622 / 77.1176</td>
+		  
+		                <td>11</td>
+		                <td>-18</td>
+		                <td>-62%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>209</td>
+		                <td>亞曼尼</td>
+		                <td>唇膏</td>
+		                <td>1240 / 36.4706</td>
+		  
+		                <td>4</td>
+		                <td>-7</td>
+		                <td>-64%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>210</td>
+		                <td>聖羅蘭</td>
+		                <td>遮瑕</td>
+		                <td>2014 / 59.2353</td>
+		  
+		                <td>9</td>
+		                <td>-17</td>
+		                <td>-65%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>211</td>
+		                <td>契爾氏</td>
+		                <td>洗面乳</td>
+		                <td>656 / 19.2941</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>212</td>
+		                <td>SK-II</td>
+		                <td>唇彩</td>
+		                <td>447 / 13.1471</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>213</td>
+		                <td>香奈兒</td>
+		                <td>遮瑕</td>
+		                <td>1092 / 32.1176</td>
+		  
+		                <td>4</td>
+		                <td>-8</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>214</td>
+		                <td>香奈兒</td>
+		                <td>唇蜜</td>
+		                <td>1402 / 41.2353</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>215</td>
+		                <td>碧兒泉</td>
+		                <td>毛孔</td>
+		                <td>530 / 15.5882</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>216</td>
+		                <td>芭比波朗</td>
+		                <td>護唇膏</td>
+		                <td>454 / 13.3529</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>217</td>
+		                <td>芭比波朗</td>
+		                <td>海綿</td>
+		                <td>352 / 10.3529</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>218</td>
+		                <td>亞曼尼</td>
+		                <td>化妝水</td>
+		                <td>694 / 20.4118</td>
+		  
+		                <td>2</td>
+		                <td>-4</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>219</td>
+		                <td>SK-II</td>
+		                <td>凝膠</td>
+		                <td>340 / 10</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>220</td>
+		                <td>香奈兒</td>
+		                <td>香精</td>
+		                <td>334 / 9.82353</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>221</td>
+		                <td>SK-II</td>
+		                <td>化妝水</td>
+		                <td>2191 / 64.4412</td>
+		  
+		                <td>3</td>
+		                <td>-6</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>222</td>
+		                <td>契爾氏</td>
+		                <td>唇彩</td>
+		                <td>503 / 14.7941</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>223</td>
+		                <td>雅詩蘭黛</td>
+		                <td>化妝棉</td>
+		                <td>353 / 10.3824</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>224</td>
+		                <td>雅詩蘭黛</td>
+		                <td>眼霜</td>
+		                <td>671 / 19.7353</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>225</td>
+		                <td>魅可</td>
+		                <td>面膜</td>
+		                <td>455 / 13.3824</td>
+		  
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>226</td>
+		                <td>香奈兒</td>
+		                <td>防曬</td>
+		                <td>834 / 24.5294</td>
+		  
+		                <td>2</td>
+		                <td>-5</td>
+		                <td>-71%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>227</td>
+		                <td>SK-II</td>
+		                <td>乳液</td>
+		                <td>1441 / 42.3824</td>
+		  
+		                <td>2</td>
+		                <td>-5</td>
+		                <td>-71%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>228</td>
+		                <td>亞曼尼</td>
+		                <td>遮瑕</td>
+		                <td>952 / 28</td>
+		  
+		                <td>2</td>
+		                <td>-5</td>
+		                <td>-71%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>229</td>
+		                <td>碧兒泉</td>
+		                <td>精華液</td>
+		                <td>1056 / 31.0588</td>
+		  
+		                <td>2</td>
+		                <td>-5</td>
+		                <td>-71%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>230</td>
+		                <td>聖羅蘭</td>
+		                <td>海綿</td>
+		                <td>601 / 17.6765</td>
+		  
+		                <td>5</td>
+		                <td>-13</td>
+		                <td>-72%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>231</td>
+		                <td>SK-II</td>
+		                <td>洗面乳</td>
+		                <td>384 / 11.2941</td>
+		  
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>232</td>
+		                <td>聖羅蘭</td>
+		                <td>護唇膏</td>
+		                <td>1367 / 40.2059</td>
+		  
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>233</td>
+		                <td>香奈兒</td>
+		                <td>粉霜</td>
+		                <td>666 / 19.5882</td>
+		  
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>234</td>
+		                <td>植村秀</td>
+		                <td>面膜</td>
+		                <td>701 / 20.6176</td>
+		  
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>235</td>
+		                <td>蘭蔻</td>
+		                <td>海綿</td>
+		                <td>748 / 22</td>
+		  
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>236</td>
+		                <td>聖羅蘭</td>
+		                <td>面膜</td>
+		                <td>521 / 15.3235</td>
+		  
+		                <td>1</td>
+		                <td>-4</td>
+		                <td>-80%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>237</td>
+		                <td>香奈兒</td>
+		                <td>精油</td>
+		                <td>397 / 11.6765</td>
+		  
+		                <td>1</td>
+		                <td>-4</td>
+		                <td>-80%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>238</td>
+		                <td>雅詩蘭黛</td>
+		                <td>海綿</td>
+		                <td>392 / 11.5294</td>
+		  
+		                <td>1</td>
+		                <td>-4</td>
+		                <td>-80%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>239</td>
+		                <td>植村秀</td>
+		                <td>化妝水</td>
+		                <td>1177 / 34.6176</td>
+		  
+		                <td>1</td>
+		                <td>-4</td>
+		                <td>-80%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>240</td>
+		                <td>SK-II</td>
+		                <td>彩妝</td>
+		                <td>995 / 29.2647</td>
+		  
+		                <td>1</td>
+		                <td>-4</td>
+		                <td>-80%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>241</td>
+		                <td>聖羅蘭</td>
+		                <td>防曬</td>
+		                <td>958 / 28.1765</td>
+		  
+		                <td>2</td>
+		                <td>-9</td>
+		                <td>-82%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>242</td>
+		                <td>聖羅蘭</td>
+		                <td>慕絲</td>
+		                <td>617 / 18.1471</td>
+		  
+		                <td>1</td>
+		                <td>-5</td>
+		                <td>-83%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>243</td>
+		                <td>香奈兒</td>
+		                <td>慕絲</td>
+		                <td>636 / 18.7059</td>
+		  
+		                <td>1</td>
+		                <td>-5</td>
+		                <td>-83%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>244</td>
+		                <td>香奈兒</td>
+		                <td>面膜</td>
+		                <td>525 / 15.4412</td>
+		  
+		                <td>1</td>
+		                <td>-5</td>
+		                <td>-83%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>245</td>
+		                <td>植村秀</td>
+		                <td>精油</td>
+		                <td>591 / 17.3824</td>
+		  
+		                <td>1</td>
+		                <td>-6</td>
+		                <td>-86%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>246</td>
+		                <td>達爾膚</td>
+		                <td>精華液</td>
+		                <td>1151 / 33.8529</td>
+		  
+		                <td>1</td>
+		                <td>-12</td>
+		                <td>-92%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>247</td>
+		                <td>達爾膚</td>
+		                <td>乳霜</td>
+		                <td>452 / 13.2941</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>248</td>
+		                <td>契爾氏</td>
+		                <td>唇蜜</td>
+		                <td>546 / 16.0588</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>249</td>
+		                <td>碧兒泉</td>
+		                <td>粉餅</td>
+		                <td>825 / 24.2647</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>250</td>
+		                <td>魅可</td>
+		                <td>眉粉</td>
+		                <td>337 / 9.91177</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>251</td>
+		                <td>雅詩蘭黛</td>
+		                <td>慕絲</td>
+		                <td>421 / 12.3824</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>252</td>
+		                <td>亞曼尼</td>
+		                <td>粉霜</td>
+		                <td>358 / 10.5294</td>
+		  
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>253</td>
+		                <td>達爾膚</td>
+		                <td>毛孔</td>
+		                <td>446 / 13.1176</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>254</td>
+		                <td>亞曼尼</td>
+		                <td>慕絲</td>
+		                <td>383 / 11.2647</td>
+		  
+		                <td>0</td>
+		                <td>-6</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>255</td>
+		                <td>魅可</td>
+		                <td>乳霜</td>
+		                <td>324 / 9.52941</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>256</td>
+		                <td>SK-II</td>
+		                <td>CC霜</td>
+		                <td>700 / 20.5882</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>257</td>
+		                <td>SK-II</td>
+		                <td>防曬</td>
+		                <td>1193 / 35.0882</td>
+		  
+		                <td>0</td>
+		                <td>-11</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>258</td>
+		                <td>聖羅蘭</td>
+		                <td>指甲</td>
+		                <td>300 / 8.82353</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>259</td>
+		                <td>植村秀</td>
+		                <td>染眉膏</td>
+		                <td>299 / 8.79412</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>260</td>
+		                <td>雅詩蘭黛</td>
+		                <td>粉霜</td>
+		                <td>491 / 14.4412</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>261</td>
+		                <td>魅可</td>
+		                <td>眉筆</td>
+		                <td>423 / 12.4412</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>262</td>
+		                <td>芭比波朗</td>
+		                <td>CC霜</td>
+		                <td>304 / 8.94118</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>263</td>
+		                <td>達爾膚</td>
+		                <td>面膜</td>
+		                <td>786 / 23.1176</td>
+		  
+		                <td>0</td>
+		                <td>-9</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>264</td>
+		                <td>亞曼尼</td>
+		                <td>防曬</td>
+		                <td>503 / 14.7941</td>
+		  
+		                <td>0</td>
+		                <td>-5</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>265</td>
+		                <td>SK-II</td>
+		                <td>遮瑕</td>
+		                <td>882 / 25.9412</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>266</td>
+		                <td>碧兒泉</td>
+		                <td>唇蜜</td>
+		                <td>460 / 13.5294</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>267</td>
+		                <td>蘭蔻</td>
+		                <td>慕絲</td>
+		                <td>543 / 15.9706</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>268</td>
+		                <td>亞曼尼</td>
+		                <td>面膜</td>
+		                <td>326 / 9.58823</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>269</td>
+		                <td>達爾膚</td>
+		                <td>防曬</td>
+		                <td>687 / 20.2059</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>270</td>
+		                <td>植村秀</td>
+		                <td>唇釉</td>
+		                <td>463 / 13.6176</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>271</td>
+		                <td>芭比波朗</td>
+		                <td>慕絲</td>
+		                <td>301 / 8.85294</td>
+		  
+		                <td>0</td>
+		                <td>-5</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>272</td>
+		                <td>植村秀</td>
+		                <td>口紅</td>
+		                <td>438 / 12.8824</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>273</td>
+		                <td>聖羅蘭</td>
+		                <td>唇頰</td>
+		                <td>303 / 8.91177</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>274</td>
+		                <td>植村秀</td>
+		                <td>香水</td>
+		                <td>363 / 10.6765</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>275</td>
+		                <td>植村秀</td>
+		                <td>敏感</td>
+		                <td>532 / 15.6471</td>
+		  
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>276</td>
+		                <td>魅可</td>
+		                <td>眼線筆</td>
+		                <td>387 / 11.3824</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>277</td>
+		                <td>芭比波朗</td>
+		                <td>面膜</td>
+		                <td>306 / 9</td>
+		  
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>278</td>
+		                <td>歐蕾</td>
+		                <td>防曬</td>
+		                <td>365 / 10.7353</td>
+		  
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>279</td>
+		                <td>芭比波朗</td>
+		                <td>粉霜</td>
+		                <td>402 / 11.8235</td>
+		  
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>280</td>
+		                <td>達爾膚</td>
+		                <td>敏感</td>
+		                <td>627 / 18.4412</td>
+		  
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>281</td>
+		                <td>香奈兒</td>
+		                <td>毛孔</td>
+		                <td>611 / 17.9706</td>
+		  
+		                <td>0</td>
+		                <td>-5</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>282</td>
+		                <td>植村秀</td>
+		                <td>CC霜</td>
+		                <td>522 / 15.3529</td>
+		  
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+
+        </tbody>
+    </table>
+</div >
+        
+<div role="tabpanel" class="tab-pane fade" id="example1-tab2">
+<table id="example2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+		<!-- <div>測試</div>-->
+        <thead>
+            <tr>
+                <th ">Ranking2</th>
+                <th>Brand Name</th>
+                <th>Product</th>
+                <th>#Total/WeekAvg</th>
+         
+                <th>This Week</th>
+                <th>#Growing</th>
+                <th>Growth Rate</th>
+            
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+           
+                   <th ">Ranking</th>
+                <th>Brand Name</th>
+                <th>Product</th>
+                <th>#Total/WeekAvg</th>
+               
+                <th>This Week</th>
+                <th>#Growing</th>
+                <th>Growth Rate</th>
+                
+            </tr>
+        </tfoot>
+        <tbody>
+        
+		
+			
+		            <tr>
+		                <td>1</td>
+		                <td>契爾氏</td>
+		                <td>防曬</td>
+		                <td>1057 / 7.23973</td>
+		            
+		                <td>6</td>
+		                <td>5</td>
+		                <td>500%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>2</td>
+		                <td>聖羅蘭</td>
+		                <td>唇彩</td>
+		                <td>2247 / 15.3904</td>
+		            
+		                <td>10</td>
+		                <td>8</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>3</td>
+		                <td>SK-II</td>
+		                <td>毛孔</td>
+		                <td>1369 / 9.37671</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>4</td>
+		                <td>契爾氏</td>
+		                <td>敏感</td>
+		                <td>1302 / 8.91781</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>5</td>
+		                <td>植村秀</td>
+		                <td>唇彩</td>
+		                <td>1228 / 8.41096</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>6</td>
+		                <td>香奈兒</td>
+		                <td>唇彩</td>
+		                <td>1168 / 8</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>7</td>
+		                <td>碧兒泉</td>
+		                <td>乳液</td>
+		                <td>790 / 5.41096</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>8</td>
+		                <td>蘭蔻</td>
+		                <td>化妝棉</td>
+		                <td>460 / 3.15068</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>9</td>
+		                <td>亞曼尼</td>
+		                <td>粉餅</td>
+		                <td>1090 / 7.46575</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>10</td>
+		                <td>植村秀</td>
+		                <td>粉底液</td>
+		                <td>1988 / 13.6164</td>
+		            
+		                <td>5</td>
+		                <td>4</td>
+		                <td>400%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>11</td>
+		                <td>契爾氏</td>
+		                <td>乳液</td>
+		                <td>1584 / 10.8493</td>
+		            
+		                <td>8</td>
+		                <td>6</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>12</td>
+		                <td>植村秀</td>
+		                <td>防曬</td>
+		                <td>1258 / 8.61644</td>
+		            
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>13</td>
+		                <td>聖羅蘭</td>
+		                <td>敏感</td>
+		                <td>496 / 3.39726</td>
+		            
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>14</td>
+		                <td>植村秀</td>
+		                <td>眼妝</td>
+		                <td>1083 / 7.41781</td>
+		            
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>15</td>
+		                <td>聖羅蘭</td>
+		                <td>眉毛</td>
+		                <td>605 / 4.14384</td>
+		            
+		                <td>4</td>
+		                <td>3</td>
+		                <td>300%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>16</td>
+		                <td>蘭蔻</td>
+		                <td>唇彩</td>
+		                <td>748 / 5.12329</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>17</td>
+		                <td>達爾膚</td>
+		                <td>乳液</td>
+		                <td>1025 / 7.02055</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>18</td>
+		                <td>植村秀</td>
+		                <td>凝膠</td>
+		                <td>346 / 2.36986</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>19</td>
+		                <td>蘭蔻</td>
+		                <td>粉餅</td>
+		                <td>3115 / 21.3356</td>
+		            
+		                <td>12</td>
+		                <td>8</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>20</td>
+		                <td>雅詩蘭黛</td>
+		                <td>防曬</td>
+		                <td>1059 / 7.25342</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>21</td>
+		                <td>植村秀</td>
+		                <td>毛孔</td>
+		                <td>1241 / 8.5</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>22</td>
+		                <td>香奈兒</td>
+		                <td>睫毛膏</td>
+		                <td>499 / 3.41781</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>23</td>
+		                <td>契爾氏</td>
+		                <td>香水</td>
+		                <td>346 / 2.36986</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>24</td>
+		                <td>聖羅蘭</td>
+		                <td>眼妝</td>
+		                <td>867 / 5.93836</td>
+		            
+		                <td>6</td>
+		                <td>4</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>25</td>
+		                <td>達爾膚</td>
+		                <td>化妝水</td>
+		                <td>1172 / 8.0274</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>26</td>
+		                <td>SK-II</td>
+		                <td>面膜</td>
+		                <td>1199 / 8.21233</td>
+		            
+		                <td>6</td>
+		                <td>4</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>27</td>
+		                <td>聖羅蘭</td>
+		                <td>睫毛</td>
+		                <td>909 / 6.22603</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>28</td>
+		                <td>香奈兒</td>
+		                <td>睫毛</td>
+		                <td>679 / 4.65068</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>29</td>
+		                <td>香奈兒</td>
+		                <td>眼線筆</td>
+		                <td>326 / 2.23288</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>30</td>
+		                <td>SK-II</td>
+		                <td>敏感</td>
+		                <td>773 / 5.29452</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>31</td>
+		                <td>芭比波朗</td>
+		                <td>眼妝</td>
+		                <td>583 / 3.99315</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>32</td>
+		                <td>魅可</td>
+		                <td>唇釉</td>
+		                <td>546 / 3.73973</td>
+		            
+		                <td>6</td>
+		                <td>4</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>33</td>
+		                <td>雅詩蘭黛</td>
+		                <td>唇彩</td>
+		                <td>918 / 6.28767</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>34</td>
+		                <td>SK-II</td>
+		                <td>精華液</td>
+		                <td>2049 / 14.0342</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>35</td>
+		                <td>植村秀</td>
+		                <td>眼線筆</td>
+		                <td>566 / 3.87671</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>36</td>
+		                <td>聖羅蘭</td>
+		                <td>睫毛膏</td>
+		                <td>690 / 4.72603</td>
+		            
+		                <td>3</td>
+		                <td>2</td>
+		                <td>200%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>37</td>
+		                <td>植村秀</td>
+		                <td>粉餅</td>
+		                <td>2030 / 13.9041</td>
+		            
+		                <td>8</td>
+		                <td>5</td>
+		                <td>167%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>38</td>
+		                <td>香奈兒</td>
+		                <td>唇釉</td>
+		                <td>403 / 2.76027</td>
+		            
+		                <td>5</td>
+		                <td>3</td>
+		                <td>150%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>39</td>
+		                <td>契爾氏</td>
+		                <td>彩妝</td>
+		                <td>897 / 6.14384</td>
+		            
+		                <td>5</td>
+		                <td>3</td>
+		                <td>150%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>40</td>
+		                <td>魅可</td>
+		                <td>護唇膏</td>
+		                <td>702 / 4.80822</td>
+		            
+		                <td>7</td>
+		                <td>4</td>
+		                <td>133%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>41</td>
+		                <td>香奈兒</td>
+		                <td>乳液</td>
+		                <td>577 / 3.95205</td>
+		            
+		                <td>7</td>
+		                <td>4</td>
+		                <td>133%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>42</td>
+		                <td>芭比波朗</td>
+		                <td>毛孔</td>
+		                <td>593 / 4.06164</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>43</td>
+		                <td>魅可</td>
+		                <td>唇彩</td>
+		                <td>1044 / 7.15068</td>
+		            
+		                <td>8</td>
+		                <td>4</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>44</td>
+		                <td>SK-II</td>
+		                <td>乳液</td>
+		                <td>1441 / 9.86986</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>45</td>
+		                <td>香奈兒</td>
+		                <td>指甲</td>
+		                <td>349 / 2.39041</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>46</td>
+		                <td>SK-II</td>
+		                <td>唇膏</td>
+		                <td>695 / 4.76027</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>47</td>
+		                <td>聖羅蘭</td>
+		                <td>精油</td>
+		                <td>602 / 4.12329</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>48</td>
+		                <td>契爾氏</td>
+		                <td>粉底液</td>
+		                <td>755 / 5.17123</td>
+		            
+		                <td>6</td>
+		                <td>3</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>49</td>
+		                <td>魅可</td>
+		                <td>防曬</td>
+		                <td>711 / 4.86986</td>
+		            
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>50</td>
+		                <td>芭比波朗</td>
+		                <td>防曬</td>
+		                <td>587 / 4.02055</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>51</td>
+		                <td>雅詩蘭黛</td>
+		                <td>細紋</td>
+		                <td>681 / 4.66438</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>52</td>
+		                <td>雅詩蘭黛</td>
+		                <td>唇膏</td>
+		                <td>1589 / 10.8836</td>
+		            
+		                <td>10</td>
+		                <td>5</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>53</td>
+		                <td>植村秀</td>
+		                <td>眉筆</td>
+		                <td>723 / 4.95205</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>54</td>
+		                <td>蘭蔻</td>
+		                <td>護唇膏</td>
+		                <td>549 / 3.76027</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>55</td>
+		                <td>聖羅蘭</td>
+		                <td>口紅</td>
+		                <td>918 / 6.28767</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>56</td>
+		                <td>雅詩蘭黛</td>
+		                <td>凝膠</td>
+		                <td>396 / 2.71233</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>57</td>
+		                <td>香奈兒</td>
+		                <td>防曬</td>
+		                <td>834 / 5.71233</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>58</td>
+		                <td>契爾氏</td>
+		                <td>毛孔</td>
+		                <td>1488 / 10.1918</td>
+		            
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>59</td>
+		                <td>雅詩蘭黛</td>
+		                <td>眼妝</td>
+		                <td>350 / 2.39726</td>
+		            
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>60</td>
+		                <td>聖羅蘭</td>
+		                <td>眉筆</td>
+		                <td>425 / 2.91096</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>61</td>
+		                <td>聖羅蘭</td>
+		                <td>唇釉</td>
+		                <td>1230 / 8.42466</td>
+		            
+		                <td>6</td>
+		                <td>3</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>62</td>
+		                <td>雅詩蘭黛</td>
+		                <td>睫毛</td>
+		                <td>396 / 2.71233</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>63</td>
+		                <td>歐蕾</td>
+		                <td>乳液</td>
+		                <td>496 / 3.39726</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>64</td>
+		                <td>亞曼尼</td>
+		                <td>唇彩</td>
+		                <td>900 / 6.16438</td>
+		            
+		                <td>4</td>
+		                <td>2</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>65</td>
+		                <td>聖羅蘭</td>
+		                <td>CC霜</td>
+		                <td>516 / 3.53425</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>66</td>
+		                <td>雅詩蘭黛</td>
+		                <td>洗髮</td>
+		                <td>307 / 2.10274</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>67</td>
+		                <td>SK-II</td>
+		                <td>細紋</td>
+		                <td>816 / 5.58904</td>
+		            
+		                <td>2</td>
+		                <td>1</td>
+		                <td>100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>68</td>
+		                <td>芭比波朗</td>
+		                <td>遮瑕</td>
+		                <td>1394 / 9.54795</td>
+		            
+		                <td>5</td>
+		                <td>2</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>69</td>
+		                <td>芭比波朗</td>
+		                <td>彩妝</td>
+		                <td>1254 / 8.58904</td>
+		            
+		                <td>5</td>
+		                <td>2</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>70</td>
+		                <td>雅詩蘭黛</td>
+		                <td>粉餅</td>
+		                <td>1690 / 11.5753</td>
+		            
+		                <td>5</td>
+		                <td>2</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>71</td>
+		                <td>契爾氏</td>
+		                <td>化妝水</td>
+		                <td>2927 / 20.0479</td>
+		            
+		                <td>10</td>
+		                <td>4</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>72</td>
+		                <td>聖羅蘭</td>
+		                <td>海綿</td>
+		                <td>601 / 4.11644</td>
+		            
+		                <td>5</td>
+		                <td>2</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>73</td>
+		                <td>聖羅蘭</td>
+		                <td>乳霜</td>
+		                <td>1143 / 7.82877</td>
+		            
+		                <td>5</td>
+		                <td>2</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>74</td>
+		                <td>香奈兒</td>
+		                <td>香水</td>
+		                <td>729 / 4.99315</td>
+		            
+		                <td>5</td>
+		                <td>2</td>
+		                <td>67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>75</td>
+		                <td>聖羅蘭</td>
+		                <td>香水</td>
+		                <td>547 / 3.74658</td>
+		            
+		                <td>6</td>
+		                <td>2</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>76</td>
+		                <td>植村秀</td>
+		                <td>遮瑕</td>
+		                <td>1847 / 12.6507</td>
+		            
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>77</td>
+		                <td>SK-II</td>
+		                <td>化妝棉</td>
+		                <td>941 / 6.44521</td>
+		            
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>78</td>
+		                <td>蘭蔻</td>
+		                <td>唇膏</td>
+		                <td>1481 / 10.1438</td>
+		            
+		                <td>9</td>
+		                <td>3</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>79</td>
+		                <td>芭比波朗</td>
+		                <td>唇彩</td>
+		                <td>543 / 3.71918</td>
+		            
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>80</td>
+		                <td>蘭蔻</td>
+		                <td>遮瑕</td>
+		                <td>2260 / 15.4795</td>
+		            
+		                <td>6</td>
+		                <td>2</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>81</td>
+		                <td>芭比波朗</td>
+		                <td>粉餅</td>
+		                <td>1308 / 8.9589</td>
+		            
+		                <td>3</td>
+		                <td>1</td>
+		                <td>50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>82</td>
+		                <td>聖羅蘭</td>
+		                <td>毛孔</td>
+		                <td>980 / 6.71233</td>
+		            
+		                <td>7</td>
+		                <td>2</td>
+		                <td>40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>83</td>
+		                <td>亞曼尼</td>
+		                <td>彩妝</td>
+		                <td>1280 / 8.76712</td>
+		            
+		                <td>7</td>
+		                <td>2</td>
+		                <td>40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>84</td>
+		                <td>蘭蔻</td>
+		                <td>粉底液</td>
+		                <td>2415 / 16.5411</td>
+		            
+		                <td>11</td>
+		                <td>3</td>
+		                <td>38%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>85</td>
+		                <td>聖羅蘭</td>
+		                <td>乳液</td>
+		                <td>627 / 4.29452</td>
+		            
+		                <td>8</td>
+		                <td>2</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>86</td>
+		                <td>雅詩蘭黛</td>
+		                <td>乳霜</td>
+		                <td>1598 / 10.9452</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>87</td>
+		                <td>魅可</td>
+		                <td>毛孔</td>
+		                <td>813 / 5.56849</td>
+		            
+		                <td>8</td>
+		                <td>2</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>88</td>
+		                <td>碧兒泉</td>
+		                <td>彩妝</td>
+		                <td>588 / 4.0274</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>89</td>
+		                <td>香奈兒</td>
+		                <td>遮瑕</td>
+		                <td>1092 / 7.47945</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>90</td>
+		                <td>植村秀</td>
+		                <td>睫毛</td>
+		                <td>1234 / 8.45205</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>91</td>
+		                <td>契爾氏</td>
+		                <td>精華液</td>
+		                <td>1815 / 12.4315</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>92</td>
+		                <td>碧兒泉</td>
+		                <td>化妝水</td>
+		                <td>1221 / 8.36301</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>93</td>
+		                <td>契爾氏</td>
+		                <td>唇膏</td>
+		                <td>1076 / 7.36986</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>94</td>
+		                <td>魅可</td>
+		                <td>海綿</td>
+		                <td>383 / 2.62329</td>
+		            
+		                <td>4</td>
+		                <td>1</td>
+		                <td>33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>95</td>
+		                <td>聖羅蘭</td>
+		                <td>粉底液</td>
+		                <td>2299 / 15.7466</td>
+		            
+		                <td>18</td>
+		                <td>4</td>
+		                <td>29%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>96</td>
+		                <td>魅可</td>
+		                <td>粉底液</td>
+		                <td>1048 / 7.17808</td>
+		            
+		                <td>14</td>
+		                <td>3</td>
+		                <td>27%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>97</td>
+		                <td>聖羅蘭</td>
+		                <td>粉餅</td>
+		                <td>2622 / 17.9589</td>
+		            
+		                <td>11</td>
+		                <td>2</td>
+		                <td>22%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>98</td>
+		                <td>聖羅蘭</td>
+		                <td>彩妝</td>
+		                <td>2521 / 17.2671</td>
+		            
+		                <td>11</td>
+		                <td>2</td>
+		                <td>22%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>99</td>
+		                <td>香奈兒</td>
+		                <td>彩妝</td>
+		                <td>1978 / 13.5479</td>
+		            
+		                <td>11</td>
+		                <td>2</td>
+		                <td>22%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>100</td>
+		                <td>雅詩蘭黛</td>
+		                <td>彩妝</td>
+		                <td>1487 / 10.1849</td>
+		            
+		                <td>6</td>
+		                <td>1</td>
+		                <td>20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>101</td>
+		                <td>植村秀</td>
+		                <td>唇膏</td>
+		                <td>1876 / 12.8493</td>
+		            
+		                <td>6</td>
+		                <td>1</td>
+		                <td>20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>102</td>
+		                <td>亞曼尼</td>
+		                <td>粉底液</td>
+		                <td>1157 / 7.92466</td>
+		            
+		                <td>8</td>
+		                <td>1</td>
+		                <td>14%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>103</td>
+		                <td>魅可</td>
+		                <td>粉餅</td>
+		                <td>1303 / 8.92466</td>
+		            
+		                <td>8</td>
+		                <td>1</td>
+		                <td>14%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>104</td>
+		                <td>聖羅蘭</td>
+		                <td>遮瑕</td>
+		                <td>2014 / 13.7945</td>
+		            
+		                <td>9</td>
+		                <td>1</td>
+		                <td>13%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>105</td>
+		                <td>芭比波朗</td>
+		                <td>乳液</td>
+		                <td>342 / 2.34247</td>
+		            
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>106</td>
+		                <td>香奈兒</td>
+		                <td>化妝水</td>
+		                <td>1145 / 7.84247</td>
+		            
+		                <td>6</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>107</td>
+		                <td>蘭蔻</td>
+		                <td>卸妝油</td>
+		                <td>311 / 2.13014</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>108</td>
+		                <td>香奈兒</td>
+		                <td>唇膏</td>
+		                <td>2137 / 14.637</td>
+		            
+		                <td>14</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>109</td>
+		                <td>契爾氏</td>
+		                <td>乳霜</td>
+		                <td>1349 / 9.23973</td>
+		            
+		                <td>4</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>110</td>
+		                <td>蘭蔻</td>
+		                <td>香水</td>
+		                <td>504 / 3.45205</td>
+		            
+		                <td>4</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>111</td>
+		                <td>魅可</td>
+		                <td>面膜</td>
+		                <td>455 / 3.11644</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>112</td>
+		                <td>歐蕾</td>
+		                <td>化妝水</td>
+		                <td>411 / 2.81507</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>113</td>
+		                <td>香奈兒</td>
+		                <td>粉底液</td>
+		                <td>1378 / 9.43836</td>
+		            
+		                <td>8</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>114</td>
+		                <td>聖羅蘭</td>
+		                <td>眼線液</td>
+		                <td>398 / 2.72603</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>115</td>
+		                <td>蘭蔻</td>
+		                <td>洗髮</td>
+		                <td>342 / 2.34247</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>116</td>
+		                <td>聖羅蘭</td>
+		                <td>防曬</td>
+		                <td>958 / 6.56164</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>117</td>
+		                <td>植村秀</td>
+		                <td>睫毛膏</td>
+		                <td>871 / 5.96575</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>118</td>
+		                <td>聖羅蘭</td>
+		                <td>化妝水</td>
+		                <td>1230 / 8.42466</td>
+		            
+		                <td>8</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>119</td>
+		                <td>亞曼尼</td>
+		                <td>遮瑕</td>
+		                <td>952 / 6.52055</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>120</td>
+		                <td>植村秀</td>
+		                <td>海綿</td>
+		                <td>825 / 5.65068</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>121</td>
+		                <td>芭比波朗</td>
+		                <td>護唇膏</td>
+		                <td>454 / 3.10959</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>122</td>
+		                <td>歐蕾</td>
+		                <td>精華液</td>
+		                <td>421 / 2.88356</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>123</td>
+		                <td>魅可</td>
+		                <td>唇蜜</td>
+		                <td>605 / 4.14384</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>124</td>
+		                <td>聖羅蘭</td>
+		                <td>粉霜</td>
+		                <td>815 / 5.58219</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>125</td>
+		                <td>SK-II</td>
+		                <td>化妝水</td>
+		                <td>2191 / 15.0068</td>
+		            
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>126</td>
+		                <td>香奈兒</td>
+		                <td>慕絲</td>
+		                <td>636 / 4.35616</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>127</td>
+		                <td>蘭蔻</td>
+		                <td>海綿</td>
+		                <td>748 / 5.12329</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>128</td>
+		                <td>SK-II</td>
+		                <td>粉底液</td>
+		                <td>697 / 4.77397</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>129</td>
+		                <td>碧兒泉</td>
+		                <td>粉底液</td>
+		                <td>670 / 4.58904</td>
+		            
+		                <td>5</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>130</td>
+		                <td>蘭蔻</td>
+		                <td>凝膠</td>
+		                <td>435 / 2.97945</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>131</td>
+		                <td>魅可</td>
+		                <td>眼線液</td>
+		                <td>441 / 3.02055</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>132</td>
+		                <td>魅可</td>
+		                <td>彩妝</td>
+		                <td>1641 / 11.2397</td>
+		            
+		                <td>4</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>133</td>
+		                <td>雅詩蘭黛</td>
+		                <td>精油</td>
+		                <td>468 / 3.20548</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>134</td>
+		                <td>植村秀</td>
+		                <td>眼線膠</td>
+		                <td>392 / 2.68493</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>135</td>
+		                <td>香奈兒</td>
+		                <td>精油</td>
+		                <td>397 / 2.71918</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>136</td>
+		                <td>亞曼尼</td>
+		                <td>毛孔</td>
+		                <td>454 / 3.10959</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>137</td>
+		                <td>芭比波朗</td>
+		                <td>睫毛</td>
+		                <td>576 / 3.94521</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>138</td>
+		                <td>魅可</td>
+		                <td>精油</td>
+		                <td>298 / 2.0411</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>139</td>
+		                <td>聖羅蘭</td>
+		                <td>唇膏</td>
+		                <td>3784 / 25.9178</td>
+		            
+		                <td>13</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>140</td>
+		                <td>亞曼尼</td>
+		                <td>乳霜</td>
+		                <td>701 / 4.80137</td>
+		            
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>141</td>
+		                <td>魅可</td>
+		                <td>乳液</td>
+		                <td>426 / 2.91781</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>142</td>
+		                <td>契爾氏</td>
+		                <td>化妝棉</td>
+		                <td>671 / 4.59589</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>143</td>
+		                <td>亞曼尼</td>
+		                <td>精油</td>
+		                <td>327 / 2.23973</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>144</td>
+		                <td>香奈兒</td>
+		                <td>眼妝</td>
+		                <td>587 / 4.02055</td>
+		            
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>145</td>
+		                <td>雅詩蘭黛</td>
+		                <td>香水</td>
+		                <td>509 / 3.4863</td>
+		            
+		                <td>4</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>146</td>
+		                <td>芭比波朗</td>
+		                <td>眉毛</td>
+		                <td>389 / 2.66438</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>147</td>
+		                <td>蘭蔻</td>
+		                <td>乳霜</td>
+		                <td>1256 / 8.60274</td>
+		            
+		                <td>10</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>148</td>
+		                <td>魅可</td>
+		                <td>睫毛膏</td>
+		                <td>704 / 4.82192</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>149</td>
+		                <td>植村秀</td>
+		                <td>面膜</td>
+		                <td>701 / 4.80137</td>
+		            
+		                <td>1</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>150</td>
+		                <td>香奈兒</td>
+		                <td>粉餅</td>
+		                <td>1955 / 13.3904</td>
+		            
+		                <td>4</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>151</td>
+		                <td>契爾氏</td>
+		                <td>護唇膏</td>
+		                <td>654 / 4.47945</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>152</td>
+		                <td>亞曼尼</td>
+		                <td>乳液</td>
+		                <td>345 / 2.36301</td>
+		            
+		                <td>3</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>153</td>
+		                <td>碧兒泉</td>
+		                <td>精華液</td>
+		                <td>1056 / 7.23288</td>
+		            
+		                <td>2</td>
+		                <td>0</td>
+		                <td>0%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>154</td>
+		                <td>雅詩蘭黛</td>
+		                <td>化妝水</td>
+		                <td>1768 / 12.1096</td>
+		            
+		                <td>7</td>
+		                <td>-1</td>
+		                <td>-13%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>155</td>
+		                <td>芭比波朗</td>
+		                <td>粉底液</td>
+		                <td>1263 / 8.65069</td>
+		            
+		                <td>6</td>
+		                <td>-1</td>
+		                <td>-14%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>156</td>
+		                <td>蘭蔻</td>
+		                <td>敏感</td>
+		                <td>821 / 5.62329</td>
+		            
+		                <td>6</td>
+		                <td>-1</td>
+		                <td>-14%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>157</td>
+		                <td>雅詩蘭黛</td>
+		                <td>乳液</td>
+		                <td>1164 / 7.9726</td>
+		            
+		                <td>5</td>
+		                <td>-1</td>
+		                <td>-17%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>158</td>
+		                <td>蘭蔻</td>
+		                <td>防曬</td>
+		                <td>1836 / 12.5753</td>
+		            
+		                <td>5</td>
+		                <td>-1</td>
+		                <td>-17%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>159</td>
+		                <td>魅可</td>
+		                <td>遮瑕</td>
+		                <td>1395 / 9.55479</td>
+		            
+		                <td>9</td>
+		                <td>-2</td>
+		                <td>-18%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>160</td>
+		                <td>雅詩蘭黛</td>
+		                <td>粉底液</td>
+		                <td>1765 / 12.089</td>
+		            
+		                <td>9</td>
+		                <td>-2</td>
+		                <td>-18%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>161</td>
+		                <td>雅詩蘭黛</td>
+		                <td>敏感</td>
+		                <td>656 / 4.49315</td>
+		            
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>162</td>
+		                <td>亞曼尼</td>
+		                <td>唇膏</td>
+		                <td>1240 / 8.49315</td>
+		            
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>163</td>
+		                <td>香奈兒</td>
+		                <td>乳霜</td>
+		                <td>1152 / 7.89041</td>
+		            
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>164</td>
+		                <td>植村秀</td>
+		                <td>彩妝</td>
+		                <td>2203 / 15.089</td>
+		            
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>165</td>
+		                <td>魅可</td>
+		                <td>眉毛</td>
+		                <td>620 / 4.24658</td>
+		            
+		                <td>4</td>
+		                <td>-1</td>
+		                <td>-20%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>166</td>
+		                <td>魅可</td>
+		                <td>唇膏</td>
+		                <td>2124 / 14.5479</td>
+		            
+		                <td>11</td>
+		                <td>-3</td>
+		                <td>-21%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>167</td>
+		                <td>芭比波朗</td>
+		                <td>唇膏</td>
+		                <td>1129 / 7.73288</td>
+		            
+		                <td>7</td>
+		                <td>-2</td>
+		                <td>-22%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>168</td>
+		                <td>契爾氏</td>
+		                <td>眼霜</td>
+		                <td>548 / 3.75342</td>
+		            
+		                <td>3</td>
+		                <td>-1</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>169</td>
+		                <td>香奈兒</td>
+		                <td>護唇膏</td>
+		                <td>719 / 4.92466</td>
+		            
+		                <td>3</td>
+		                <td>-1</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>170</td>
+		                <td>碧兒泉</td>
+		                <td>唇膏</td>
+		                <td>583 / 3.99315</td>
+		            
+		                <td>3</td>
+		                <td>-1</td>
+		                <td>-25%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>171</td>
+		                <td>芭比波朗</td>
+		                <td>唇蜜</td>
+		                <td>633 / 4.33562</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>172</td>
+		                <td>雅詩蘭黛</td>
+		                <td>唇蜜</td>
+		                <td>1030 / 7.05479</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>173</td>
+		                <td>亞曼尼</td>
+		                <td>唇蜜</td>
+		                <td>812 / 5.56164</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>174</td>
+		                <td>碧兒泉</td>
+		                <td>乳霜</td>
+		                <td>881 / 6.03425</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>175</td>
+		                <td>蘭蔻</td>
+		                <td>唇蜜</td>
+		                <td>938 / 6.42466</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>176</td>
+		                <td>碧兒泉</td>
+		                <td>面膜</td>
+		                <td>893 / 6.11644</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>177</td>
+		                <td>芭比波朗</td>
+		                <td>乳霜</td>
+		                <td>523 / 3.58219</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>178</td>
+		                <td>蘭蔻</td>
+		                <td>精油</td>
+		                <td>486 / 3.32877</td>
+		            
+		                <td>2</td>
+		                <td>-1</td>
+		                <td>-33%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>179</td>
+		                <td>蘭蔻</td>
+		                <td>面膜</td>
+		                <td>1004 / 6.87671</td>
+		            
+		                <td>5</td>
+		                <td>-3</td>
+		                <td>-38%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>180</td>
+		                <td>香奈兒</td>
+		                <td>精華液</td>
+		                <td>917 / 6.28082</td>
+		            
+		                <td>3</td>
+		                <td>-2</td>
+		                <td>-40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>181</td>
+		                <td>雅詩蘭黛</td>
+		                <td>精華液</td>
+		                <td>1655 / 11.3356</td>
+		            
+		                <td>3</td>
+		                <td>-2</td>
+		                <td>-40%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>182</td>
+		                <td>蘭蔻</td>
+		                <td>彩妝</td>
+		                <td>1980 / 13.5616</td>
+		            
+		                <td>7</td>
+		                <td>-5</td>
+		                <td>-42%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>183</td>
+		                <td>雅詩蘭黛</td>
+		                <td>遮瑕</td>
+		                <td>1302 / 8.91781</td>
+		            
+		                <td>4</td>
+		                <td>-3</td>
+		                <td>-43%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>184</td>
+		                <td>蘭蔻</td>
+		                <td>眼妝</td>
+		                <td>622 / 4.26027</td>
+		            
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>185</td>
+		                <td>芭比波朗</td>
+		                <td>化妝水</td>
+		                <td>667 / 4.56849</td>
+		            
+		                <td>3</td>
+		                <td>-3</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>186</td>
+		                <td>聖羅蘭</td>
+		                <td>護唇膏</td>
+		                <td>1367 / 9.36301</td>
+		            
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>187</td>
+		                <td>雅詩蘭黛</td>
+		                <td>化妝棉</td>
+		                <td>353 / 2.41781</td>
+		            
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>188</td>
+		                <td>亞曼尼</td>
+		                <td>精華液</td>
+		                <td>545 / 3.73288</td>
+		            
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>189</td>
+		                <td>聖羅蘭</td>
+		                <td>精華液</td>
+		                <td>1031 / 7.06164</td>
+		            
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>190</td>
+		                <td>芭比波朗</td>
+		                <td>精華液</td>
+		                <td>410 / 2.80822</td>
+		            
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>191</td>
+		                <td>歐蕾</td>
+		                <td>乳霜</td>
+		                <td>483 / 3.30822</td>
+		            
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>192</td>
+		                <td>魅可</td>
+		                <td>敏感</td>
+		                <td>412 / 2.82192</td>
+		            
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>193</td>
+		                <td>蘭蔻</td>
+		                <td>睫毛</td>
+		                <td>975 / 6.67808</td>
+		            
+		                <td>2</td>
+		                <td>-2</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>194</td>
+		                <td>亞曼尼</td>
+		                <td>護唇膏</td>
+		                <td>450 / 3.08219</td>
+		            
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>195</td>
+		                <td>蘭蔻</td>
+		                <td>睫毛膏</td>
+		                <td>796 / 5.45205</td>
+		            
+		                <td>1</td>
+		                <td>-1</td>
+		                <td>-50%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>196</td>
+		                <td>蘭蔻</td>
+		                <td>乳液</td>
+		                <td>1317 / 9.02055</td>
+		            
+		                <td>8</td>
+		                <td>-10</td>
+		                <td>-56%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>197</td>
+		                <td>魅可</td>
+		                <td>眼妝</td>
+		                <td>1042 / 7.13699</td>
+		            
+		                <td>3</td>
+		                <td>-4</td>
+		                <td>-57%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>198</td>
+		                <td>蘭蔻</td>
+		                <td>精華液</td>
+		                <td>1725 / 11.8151</td>
+		            
+		                <td>12</td>
+		                <td>-17</td>
+		                <td>-59%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>199</td>
+		                <td>聖羅蘭</td>
+		                <td>唇蜜</td>
+		                <td>2099 / 14.3767</td>
+		            
+		                <td>2</td>
+		                <td>-3</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>200</td>
+		                <td>魅可</td>
+		                <td>睫毛</td>
+		                <td>998 / 6.83562</td>
+		            
+		                <td>2</td>
+		                <td>-3</td>
+		                <td>-60%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>201</td>
+		                <td>蘭蔻</td>
+		                <td>眼霜</td>
+		                <td>578 / 3.9589</td>
+		            
+		                <td>9</td>
+		                <td>-14</td>
+		                <td>-61%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>202</td>
+		                <td>雅詩蘭黛</td>
+		                <td>毛孔</td>
+		                <td>1038 / 7.10959</td>
+		            
+		                <td>3</td>
+		                <td>-5</td>
+		                <td>-63%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>203</td>
+		                <td>蘭蔻</td>
+		                <td>化妝水</td>
+		                <td>2056 / 14.0822</td>
+		            
+		                <td>12</td>
+		                <td>-20</td>
+		                <td>-63%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>204</td>
+		                <td>蘭蔻</td>
+		                <td>細紋</td>
+		                <td>673 / 4.60959</td>
+		            
+		                <td>8</td>
+		                <td>-15</td>
+		                <td>-65%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>205</td>
+		                <td>植村秀</td>
+		                <td>眉粉</td>
+		                <td>398 / 2.72603</td>
+		            
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>206</td>
+		                <td>蘭蔻</td>
+		                <td>毛孔</td>
+		                <td>1436 / 9.83562</td>
+		            
+		                <td>3</td>
+		                <td>-6</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>207</td>
+		                <td>亞曼尼</td>
+		                <td>化妝水</td>
+		                <td>694 / 4.75342</td>
+		            
+		                <td>2</td>
+		                <td>-4</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>208</td>
+		                <td>魅可</td>
+		                <td>口紅</td>
+		                <td>564 / 3.86301</td>
+		            
+		                <td>2</td>
+		                <td>-4</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>209</td>
+		                <td>聖羅蘭</td>
+		                <td>慕絲</td>
+		                <td>617 / 4.22603</td>
+		            
+		                <td>1</td>
+		                <td>-2</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>210</td>
+		                <td>魅可</td>
+		                <td>化妝水</td>
+		                <td>378 / 2.58904</td>
+		            
+		                <td>2</td>
+		                <td>-4</td>
+		                <td>-67%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>211</td>
+		                <td>雅詩蘭黛</td>
+		                <td>面膜</td>
+		                <td>1129 / 7.73288</td>
+		            
+		                <td>3</td>
+		                <td>-7</td>
+		                <td>-70%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>212</td>
+		                <td>契爾氏</td>
+		                <td>面膜</td>
+		                <td>1836 / 12.5753</td>
+		            
+		                <td>2</td>
+		                <td>-5</td>
+		                <td>-71%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>213</td>
+		                <td>雅詩蘭黛</td>
+		                <td>眼霜</td>
+		                <td>671 / 4.59589</td>
+		            
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>214</td>
+		                <td>香奈兒</td>
+		                <td>唇蜜</td>
+		                <td>1402 / 9.60274</td>
+		            
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>215</td>
+		                <td>香奈兒</td>
+		                <td>面膜</td>
+		                <td>525 / 3.59589</td>
+		            
+		                <td>1</td>
+		                <td>-3</td>
+		                <td>-75%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>216</td>
+		                <td>雅詩蘭黛</td>
+		                <td>海綿</td>
+		                <td>392 / 2.68493</td>
+		            
+		                <td>1</td>
+		                <td>-4</td>
+		                <td>-80%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>217</td>
+		                <td>聖羅蘭</td>
+		                <td>面膜</td>
+		                <td>521 / 3.56849</td>
+		            
+		                <td>1</td>
+		                <td>-6</td>
+		                <td>-86%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>218</td>
+		                <td>魅可</td>
+		                <td>眉粉</td>
+		                <td>337 / 2.30822</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>219</td>
+		                <td>歐蕾</td>
+		                <td>面膜</td>
+		                <td>371 / 2.5411</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>220</td>
+		                <td>亞曼尼</td>
+		                <td>慕絲</td>
+		                <td>383 / 2.62329</td>
+		            
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>221</td>
+		                <td>香奈兒</td>
+		                <td>毛孔</td>
+		                <td>611 / 4.18493</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>222</td>
+		                <td>植村秀</td>
+		                <td>敏感</td>
+		                <td>532 / 3.64384</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>223</td>
+		                <td>亞曼尼</td>
+		                <td>面膜</td>
+		                <td>326 / 2.23288</td>
+		            
+		                <td>0</td>
+		                <td>-6</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>224</td>
+		                <td>植村秀</td>
+		                <td>唇釉</td>
+		                <td>463 / 3.17123</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>225</td>
+		                <td>碧兒泉</td>
+		                <td>粉餅</td>
+		                <td>825 / 5.65068</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>226</td>
+		                <td>芭比波朗</td>
+		                <td>面膜</td>
+		                <td>306 / 2.09589</td>
+		            
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>227</td>
+		                <td>魅可</td>
+		                <td>眼線膠</td>
+		                <td>356 / 2.43836</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>228</td>
+		                <td>植村秀</td>
+		                <td>CC霜</td>
+		                <td>522 / 3.57534</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>229</td>
+		                <td>魅可</td>
+		                <td>眉筆</td>
+		                <td>423 / 2.89726</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>230</td>
+		                <td>亞曼尼</td>
+		                <td>防曬</td>
+		                <td>503 / 3.44521</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>231</td>
+		                <td>達爾膚</td>
+		                <td>敏感</td>
+		                <td>627 / 4.29452</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>232</td>
+		                <td>魅可</td>
+		                <td>乳霜</td>
+		                <td>324 / 2.21918</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>233</td>
+		                <td>植村秀</td>
+		                <td>口紅</td>
+		                <td>438 / 3</td>
+		            
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>234</td>
+		                <td>聖羅蘭</td>
+		                <td>眉粉</td>
+		                <td>313 / 2.14384</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>235</td>
+		                <td>契爾氏</td>
+		                <td>唇蜜</td>
+		                <td>546 / 3.73973</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>236</td>
+		                <td>碧兒泉</td>
+		                <td>唇蜜</td>
+		                <td>460 / 3.15068</td>
+		            
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>237</td>
+		                <td>芭比波朗</td>
+		                <td>睫毛膏</td>
+		                <td>420 / 2.87671</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>238</td>
+		                <td>達爾膚</td>
+		                <td>毛孔</td>
+		                <td>446 / 3.05479</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>239</td>
+		                <td>雅詩蘭黛</td>
+		                <td>慕絲</td>
+		                <td>421 / 2.88356</td>
+		            
+		                <td>0</td>
+		                <td>-4</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>240</td>
+		                <td>植村秀</td>
+		                <td>唇蜜</td>
+		                <td>939 / 6.43151</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>241</td>
+		                <td>魅可</td>
+		                <td>眼線筆</td>
+		                <td>387 / 2.65068</td>
+		            
+		                <td>0</td>
+		                <td>-3</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>242</td>
+		                <td>歐蕾</td>
+		                <td>防曬</td>
+		                <td>365 / 2.5</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>243</td>
+		                <td>SK-II</td>
+		                <td>防曬</td>
+		                <td>1193 / 8.17123</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>244</td>
+		                <td>雅詩蘭黛</td>
+		                <td>粉霜</td>
+		                <td>491 / 3.36301</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>245</td>
+		                <td>達爾膚</td>
+		                <td>面膜</td>
+		                <td>786 / 5.38356</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>246</td>
+		                <td>蘭蔻</td>
+		                <td>斑點</td>
+		                <td>557 / 3.81507</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>247</td>
+		                <td>芭比波朗</td>
+		                <td>慕絲</td>
+		                <td>301 / 2.06164</td>
+		            
+		                <td>0</td>
+		                <td>-1</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+			
+		            <tr>
+		                <td>248</td>
+		                <td>蘭蔻</td>
+		                <td>慕絲</td>
+		                <td>543 / 3.71918</td>
+		            
+		                <td>0</td>
+		                <td>-2</td>
+		                <td>-100%</td>
+		
+		  
+		
+		            </tr>
+		             
+		
+
+        </tbody>
+    </table>
+</div>
+</div>
+
+    
+
+
+
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript
+    <script src="/vendor/raphael/raphael.min.js"></script>
+    <script src="/vendor/morrisjs/morris.min.js"></script>
+    <script src="/data/morris-data.js"></script>
+ -->
+    <!-- Custom Theme JavaScript -->
+    <script src="/dist/js/sb-admin-2.js"></script>
+
+
+  
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.dataTables.min.css"/>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="/redcolor.css"/>
+ 
+
+<meta charset=utf-8 />
+
+<script>
+
+$(document).ready(function() {
+// Setup - add a text input to each footer cell
+    $('#example tfoot th').each( function () {
+        var title = $('#example thead th').eq( $(this).index() ).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    } );
+	 $('#example2 tfoot th').each( function () {
+        var title = $('#example2 thead th').eq( $(this).index() ).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    } );
+    
+  
+  
+    // DataTable
+
+    var table = $('#example').DataTable({	
+	  "createdRow": function( row, data, dataIndex ) {
+	           if ( data[6].includes("-")  ) {        
+	       $(row).addClass('red');}
+	       },
+	       //"dom": "t",  //but page wold not show >1
+       "order": [] ,//order by default query
+       
+       //colReorder: true
+	  });
+	  var table2 = $('#example2').DataTable({	
+	  "createdRow": function( row, data, dataIndex ) {
+	           if ( data[6].includes("-")  ) {        
+	       $(row).addClass('red');}
+	       },
+	   
+      
+       "order": [], //order by default query
+       //"dom": "t",  //but page wold not show >1
+       //colReorder: true
+	  });
+	  
+    
+    // Apply the filter
+    $("#example tfoot input").on( 'keyup change', function () {
+        table
+            .column( $(this).parent().index()+':visible' )
+            .search( this.value )
+            .draw();
+    } );
+    
+     $("#example2 tfoot input").on( 'keyup change', function () {
+        table2
+            .column( $(this).parent().index()+':visible' )
+            .search( this.value )
+            .draw();
+    } );
+    
+    
+	 $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+         .columns.adjust();
+   });   
+    
+} );
+
+</script>
+
+
+
+</body>
+</html>
